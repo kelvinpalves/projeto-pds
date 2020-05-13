@@ -1,14 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
+import { NavBarComponent } from './main/components/nav-bar/nav-bar.component';
+import { SideBarComponent } from './main/components/side-bar/side-bar.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent,
+    SideBarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    LoadingBarHttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      progressBar: true
+    }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
