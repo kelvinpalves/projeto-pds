@@ -36,11 +36,10 @@ export class LoginComponent implements OnInit {
     this.service.logar(login)
     .subscribe(
       data => {
-        console.log(data);
+        localStorage['token'] = data.token;
       },
       err => {
-        console.log(err);
-        this.toastr.error("Erro ao efetuar o login"); 
+        delete localStorage['token'];
       }
     )
   }
