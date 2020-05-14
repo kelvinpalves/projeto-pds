@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginModule, LoginRoutingModule } from './login';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
       preventDuplicates: true,
       progressBar: true
     }),
+    LoginModule,
+    LoginRoutingModule,
     AppRoutingModule
   ],
   providers: [],
