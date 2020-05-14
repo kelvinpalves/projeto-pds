@@ -1,1 +1,62 @@
-<p>usuario-form works!</p>
+<form novalidate autocomplete="off" [formGroup]="form">
+    <div class="card bg-light mb-3" >
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <b>Cadastro de Usuários</b>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="usuario">Usuário</a>
+                    &nbsp;
+                    <i class="fas fa-arrow-right"></i>
+                    &nbsp;
+                    Cadastro de Usuário
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" class="form-control form-control-sm" placeholder="Informe o nome do usuário" formControlName="nome">
+                    </div>
+                </div>
+            
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="login">Login:</label>
+                        <input type="text" id="login" name="login" class="form-control form-control-sm" placeholder="Informe o login do usuário" formControlName="login">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" class="form-control form-control-sm" placeholder="Informe a senha do usuário" formControlName="senha">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="confirmacao">Confirmar Senha:</label>
+                        <input type="password" id="confirmacao" name="confirmacao" class="form-control form-control-sm" placeholder="Confirme a senha informada" formControlName="confirmacao">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button *ngIf="!modoAtualizar" type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="criar()">
+                <i class="fa fa-save"></i>&nbsp;
+                Salvar
+            </button>
+
+            <button *ngIf="modoAtualizar" type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="atualizar()">
+                <i class="fa fa-save"></i>&nbsp;
+                Atualizar
+            </button>
+            &nbsp;
+            <a class="btn btn-secondary" href="usuario">Voltar</a>
+        </div>
+    </div>
+</form>

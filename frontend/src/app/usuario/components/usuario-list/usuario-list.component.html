@@ -1,1 +1,11 @@
-<p>usuario-list works!</p>
+<div class="row">
+    <div class="col-md-12 text-right">
+        <a class="btn btn-primary" href="usuario/novo">
+            <i class="fa fa-plus"></i>&nbsp;Cadastrar Usuário
+        </a>
+    </div>
+    <div class="col-md-12 py-3">
+        <table id="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-sm">
+        </table>
+    </div>
+</div>

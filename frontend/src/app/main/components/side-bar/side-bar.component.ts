@@ -15,7 +15,10 @@ export class SideBarComponent implements OnInit {
   }
 
   isActive(page: string) {
-    return this.router.url == page;
+    let aux = this.router.url;
+    let list = aux.split("/");
+
+    return "/" + list[1] == page;
   }
 
 }
