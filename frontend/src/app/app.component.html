@@ -1,11 +1,19 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar *ngIf="autenticado()"></app-nav-bar>
 
-<div class="container-fluid p-3">
+<div class="container-fluid p-3" *ngIf="autenticado()">
   <div class="row">
     <div class="col-md-2">
       <app-side-bar></app-side-bar>
     </div>
     <div class="col-md-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid p-3" *ngIf="!autenticado()">
+  <div class="row">
+    <div class="col-md-12">
       <router-outlet></router-outlet>
     </div>
   </div>

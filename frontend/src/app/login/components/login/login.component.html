@@ -1,0 +1,39 @@
+<form novalidate autocomplete="off" [formGroup]="form">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="h3 mb-3 font-weight-normal">Acesso Restrito</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="username" class="sr-only">Login</label>
+                        <input type="text" id="username" class="form-control" placeholder="Informe o seu login" formControlName="username">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="password" class="sr-only">Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Informe sua senha" formControlName="password">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button [disabled]="form.invalid" class="btn btn-primary btn-block" type="submit" (click)="logar()">Entrar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="mt-5 mb-3 text-muted">&copy; 2020-2020</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

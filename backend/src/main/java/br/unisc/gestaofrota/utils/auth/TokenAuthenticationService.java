@@ -16,6 +16,9 @@ import org.springframework.security.core.Authentication;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TokenAuthenticationService {
 
@@ -33,6 +36,15 @@ public class TokenAuthenticationService {
                 .compact();
 
         response.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
+        try {
+            // Gambiarra sempre é permitido
+            response.getWriter().write("{ \"token\": \"" + TOKEN_PREFIX + " " + JWT + "\" }");
+            response.getWriter().flush();
+            response.getWriter().close();
+        } catch (IOException ex) {
+            Logger.getLogger(TokenAuthenticationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     static Authentication getAuthentication(HttpServletRequest request) {
