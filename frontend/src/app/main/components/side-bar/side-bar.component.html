@@ -1,12 +1,20 @@
-<ul class="nav flex-column" >
-    <li class="nav-item">
-        <a class="nav-link" [ngClass]="{'active': isActive('/usuario')}" href="usuario" >
-            Usuários
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" [ngClass]="{'active': isActive('/motorista')}" href="motorista">
-            Motorista
-        </a>
-    </li>
-</ul>
+<div class="row">
+    <div class="col-12">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-home-tab" 
+                data-toggle="pill" href="home" role="tab"
+                aria-controls="v-pills-home" aria-selected="true"
+                [ngClass]="{'active': isActive('/home')}">
+                <i class="fa fa-home"></i>&nbsp;Home
+            </a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="usuario" role="tab"
+                aria-controls="v-pills-profile" aria-selected="false"
+                [ngClass]="{'active': isActive('/usuario')}">
+                <i class="fa fa-users"></i>&nbsp;Usuário</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="motorista" role="tab"
+                aria-controls="v-pills-messages" aria-selected="false"
+                [ngClass]="{'active': isActive('/motorista')}">
+                <i class="fa fa-id-card"></i>&nbsp;Motorista</a>
+        </div>
+    </div>
+</div>
