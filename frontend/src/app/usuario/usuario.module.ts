@@ -1,17 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsuarioComponent } from './components/usuario/usuario.component';
-import { FormComponent } from './components/form/form.component';
-import { ListComponent } from './components/list/list.component';
-import { UsuarioFormComponent } from './components/usuario-form/usuario-form.component';
-import { UsuarioListComponent } from './components/usuario-list/usuario-list.component';
-
-
+import { UsuarioService } from './service';
+import { UsuarioFormComponent, UsuarioListComponent } from './components';
+import { CommonLocalModule } from '../common';
+import { DataTablesModule } from 'angular-datatables';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [UsuarioComponent, FormComponent, ListComponent, UsuarioFormComponent, UsuarioListComponent],
+  declarations: [
+    UsuarioFormComponent, 
+    UsuarioListComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    CommonLocalModule,
+    DataTablesModule,
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [
+    UsuarioService
   ]
 })
 export class UsuarioModule { }
