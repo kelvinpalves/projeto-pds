@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../../services';
 import { Login } from '../../models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: LoginService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -37,9 +39,12 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data => {
         localStorage['token'] = data.token;
+        this.toastr.success("Sucesso ao logar.");
+        this.router.navigate(['/home']);
       },
       err => {
         delete localStorage['token'];
+        this.toastr.error("Erro ao logar.");
       }
     )
   }

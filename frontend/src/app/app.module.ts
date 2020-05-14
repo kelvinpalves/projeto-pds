@@ -8,6 +8,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginModule, LoginRoutingModule } from './login';
+import { HomeModule, HomeRoutingModule } from './home';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,8 @@ import { LoginModule, LoginRoutingModule } from './login';
     }),
     LoginModule,
     LoginRoutingModule,
+    HomeModule, 
+    HomeRoutingModule,
     AppRoutingModule
   ],
   providers: [],
