@@ -49,9 +49,10 @@ export class VeiculoFormComponent implements OnInit {
 
   gerarForm() {
     this.form = this.fb.group({
+      nome: ['', [Validators.required]],
       placa: ['', [Validators.required]],
       chassi: ['', [Validators.required]],
-      ranavan: ['', [Validators.required]],
+      renavan: ['', [Validators.required]],
       anoModelo: ['', [Validators.required]],
       anoFabricacao: ['', [Validators.required]]
     });
@@ -66,8 +67,9 @@ export class VeiculoFormComponent implements OnInit {
           data => {
             const veiculo: Veiculo = data;
             this.form.get('placa').setValue(veiculo.placa);
+            this.form.get('nome').setValue(veiculo.nome);
             this.form.get('chassi').setValue(veiculo.chassi);
-            this.form.get('ranavan').setValue(veiculo.ranavan);
+            this.form.get('renavan').setValue(veiculo.renavan);
             this.form.get('anoModelo').setValue(veiculo.anoModelo);
             this.form.get('anoFabricacao').setValue(veiculo.anoFabricacao);
           },
