@@ -1,0 +1,68 @@
+<form novalidate autocomplete="off" [formGroup]="form">
+    <div class="card bg-light mb-3" >
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <b>Cadastro de Veículos</b>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="veiculo">Veículo</a>
+                    &nbsp;
+                    <i class="fas fa-arrow-right"></i>
+                    &nbsp;
+                    Cadastro de Veículo
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="placa">Placa:</label>
+                        <input type="text" id="placa" name="placa" class="form-control form-control-sm" placeholder="Informe o placa do veículo" formControlName="placa">
+                    </div>
+                </div>
+            
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="chassi">Chassi:</label>
+                        <input type="text" id="chassi" name="chassi" class="form-control form-control-sm" placeholder="Informe o chassi do veículo" formControlName="chassi">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="ranavan">Ranavan:</label>
+                        <input type="text" id="ranavan" name="ranavan" class="form-control form-control-sm" placeholder="Informe a ranavan do veículo" formControlName="ranavan">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="anoModelo">Ano do modelo:</label>
+                        <input type="date" id="anoModelo" name="anoModelo" class="form-control form-control-sm" formControlName="anoModelo">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="anoFabricacao">Ano de fabricação:</label>
+                        <input type="date" id="anoFabricacao" name="anoFabricacao" class="form-control form-control-sm" formControlName="anoFabricacao">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button *ngIf="!modoAtualizar" type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="criar()">
+                <i class="fa fa-save"></i>&nbsp;
+                Salvar
+            </button>
+
+            <button *ngIf="modoAtualizar" type="submit" class="btn btn-primary" [disabled]="form.invalid" (click)="atualizar()">
+                <i class="fa fa-save"></i>&nbsp;
+                Atualizar
+            </button>
+            &nbsp;
+            <a class="btn btn-secondary" href="veiculo">Voltar</a>
+        </div>
+    </div>
+</form>

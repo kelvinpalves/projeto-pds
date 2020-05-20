@@ -11,6 +11,7 @@ import { LoginModule, LoginRoutingModule } from './login';
 import { HomeModule, HomeRoutingModule } from './home';
 import { UsuarioModule, UsuarioRoutingModule } from './usuario';
 import { MotoristaModule, MotoristaRoutingModule } from './motorista';
+import { VeiculoModule, VeiculoRoutingModule } from './veiculo';
 import { CommonLocalModule } from './common';
 import { DataTablesModule } from 'angular-datatables';
 import { registerLocaleData } from '@angular/common';
@@ -42,6 +43,8 @@ registerLocaleData(localePt);
     UsuarioRoutingModule,
     MotoristaModule,
     MotoristaRoutingModule,
+    VeiculoModule,
+    VeiculoRoutingModule,
     CommonLocalModule,
     DataTablesModule,
     AppRoutingModule
