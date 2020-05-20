@@ -5,8 +5,6 @@
  */
 package br.unisc.gestaofrota.api.veiculo;
 
-import br.unisc.gestaofrota.api.veiculo.UsuarioDto;
-import br.unisc.gestaofrota.api.veiculo.UsuarioService;
 import br.unisc.pds.utils.exception.ResourceNotFoundException;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
