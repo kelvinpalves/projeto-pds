@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.unisc.gestaofrota.api.veiculo;
+package br.unisc.gestaofrota.api.veiculo.imposto;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
 /**
  *
  * @author kelvin
  */
-public interface VeiculoRepository extends JpaRepository<Vehicles, Long> {
+public interface ImpostoRepositoryCustom {
+    
+    List<TaxPayments> getByVehicle(Long id);
     
 }
