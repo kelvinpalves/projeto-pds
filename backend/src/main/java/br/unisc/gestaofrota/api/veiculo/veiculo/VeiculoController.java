@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.unisc.gestaofrota.api.veiculo;
+package br.unisc.gestaofrota.api.veiculo.veiculo;
 
-import br.unisc.gestaofrota.api.veiculo.UsuarioDto;
-import br.unisc.gestaofrota.api.veiculo.UsuarioService;
 import br.unisc.pds.utils.exception.ResourceNotFoundException;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
