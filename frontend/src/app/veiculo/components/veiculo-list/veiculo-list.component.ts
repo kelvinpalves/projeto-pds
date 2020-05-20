@@ -49,6 +49,7 @@ export class VeiculoListComponent implements OnInit, AfterViewInit {
       },
       columns: [
         { title: '#', data: 'id' }, 
+        { title: 'Nome', data: 'nome'}, 
         { title: 'Placa', data: 'placa'}, 
         { title: 'Chassi', data: 'chassi'},
         {
