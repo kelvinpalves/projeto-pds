@@ -12,16 +12,16 @@ export class ImpostoService {
     private http: HttpClient,
     private httpUtils: HttpUtilService) { }
 
-  buscar(): Observable<any> {
-    return this.http.get(env.baseApiUrl + 'imposto', this.httpUtils.headers());
+  buscar(id): Observable<any> {
+    return this.http.get(env.baseApiUrl + 'imposto/veiculo' + id, this.httpUtils.headers());
   }
 
   buscarImposto(id): Observable<any> {
     return this.http.get(env.baseApiUrl + 'imposto/' + id, this.httpUtils.headers());
   }
 
-  criar(imposto: Imposto): Observable<any> {
-    return this.http.post(env.baseApiUrl + 'imposto', imposto, this.httpUtils.headers());
+  criar(id, imposto: Imposto): Observable<any> {
+    return this.http.post(env.baseApiUrl + 'imposto/veiculo' + id, imposto, this.httpUtils.headers());
   }
 
   atualizar(imposto: Imposto, id): Observable<any> {

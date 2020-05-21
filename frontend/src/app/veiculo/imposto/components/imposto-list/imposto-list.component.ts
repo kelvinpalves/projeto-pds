@@ -81,7 +81,7 @@ export class ImpostoListComponent implements OnInit, AfterViewInit {
   }
 
   buscar(dataTablesParameters: any, callback) {
-    this.service.buscar()
+    this.service.buscar(1)
     .subscribe(
       data => {
         const response = data;
