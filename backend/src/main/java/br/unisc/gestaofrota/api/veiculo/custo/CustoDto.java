@@ -16,7 +16,7 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class ImpostoDto {
+public class CustoDto {
     private final Long id;
     private final BigDecimal valor;
     private final BigDecimal categoriaCusto;

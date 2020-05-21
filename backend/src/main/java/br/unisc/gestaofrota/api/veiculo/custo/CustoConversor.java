@@ -5,8 +5,6 @@
  */
 package br.unisc.gestaofrota.api.veiculo.custo;
 
-import br.unisc.gestaofrota.api.veiculo.Cost;
-import br.unisc.gestaofrota.api.veiculo.CustoDto;
 import java.util.function.Function;
 
 /**
@@ -18,7 +16,7 @@ public class CustoConversor {
         return (source) -> CustoDto.builder()
                 .id(source.getId())
                 .valor(source.getValue())
-                .categoriaCusto(source.costCategory())
+                .categoriaCusto(source.getCostCategory())
                 .build();
     }
 }

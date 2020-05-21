@@ -5,13 +5,10 @@
  */
 package br.unisc.gestaofrota.api.veiculo.custo;
 
-import br.unisc.gestaofrota.api.veiculo.CustoConversor;
 import br.unisc.gestaofrota.api.veiculo.veiculo.Vehicles;
 import br.unisc.gestaofrota.utils.mapper.DataMapperDefault;
 import br.unisc.pds.utils.exception.ResourceNotFoundException;
-import java.util.Arrays;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,7 +57,7 @@ public class CustoServicePadrao implements CustoService {
         Cost cost = new Cost();
         
         cost.setValue(dto.getValor());
-        cost.setCostCategory(dto.getCategoriaCusto())
+        cost.setCostCategory(dto.getCategoriaCusto());
         
         Vehicles vehicle = new Vehicles();
         vehicle.setId(veiculo);
@@ -78,7 +75,7 @@ public class CustoServicePadrao implements CustoService {
         Cost cost = this.repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id, Cost.class));
         
         cost.setValue(dto.getValor());
-        cost.setCostCategory(dto.getCategoriaCusto())
+        cost.setCostCategory(dto.getCategoriaCusto());
         
         cost = this.repository.save(cost);
         
