@@ -66,12 +66,8 @@ export class CustoFormComponent implements OnInit {
         .subscribe(
           data => {
             const custo: Custo = data;
-            this.form.get('placa').setValue(custo.placa);
-            this.form.get('nome').setValue(custo.nome);
-            this.form.get('chassi').setValue(custo.chassi);
-            this.form.get('renavan').setValue(custo.renavan);
-            this.form.get('anoModelo').setValue(custo.anoModelo);
-            this.form.get('anoFabricacao').setValue(custo.anoFabricacao);
+            this.form.get('valor').setValue(custo.valor);
+            this.form.get('categoriaCusto').setValue(custo.categoriaCusto);
           },
           err => {
             this.toastr.error("Erro ao buscar dados.");

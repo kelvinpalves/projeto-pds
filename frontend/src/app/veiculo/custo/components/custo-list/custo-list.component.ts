@@ -49,9 +49,8 @@ export class CustoListComponent implements OnInit, AfterViewInit {
       },
       columns: [
         { title: '#', data: 'id' }, 
-        { title: 'Nome', data: 'nome'}, 
-        { title: 'Placa', data: 'placa'}, 
-        { title: 'Chassi', data: 'chassi'},
+        { title: 'Valor', data: 'valor'}, 
+        { title: 'Categoria do custo', data: 'categoriaCusto'}, 
         {
           data: 'id', searchable: false, orderable: false, title: "Ações", name: 'id', className: 'text-center ', render: (d1, d2, data) => {
             return `
@@ -92,7 +91,7 @@ export class CustoListComponent implements OnInit, AfterViewInit {
         });
       },
       err => {
-        this.toastr.error("Erro ao carregar a lista de veículos.");
+        this.toastr.error("Erro ao carregar a lista de custos.");
       }
     )
   }
@@ -109,7 +108,7 @@ export class CustoListComponent implements OnInit, AfterViewInit {
 
     Swal.fire({
       title: 'Você tem certeza?',
-      text: "Ao aceitar, o veículo " + custo.placa + " será removido!",
+      text: "Ao aceitar, o custo " + custo.id + " será removido!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -121,12 +120,12 @@ export class CustoListComponent implements OnInit, AfterViewInit {
         this.service.remover(custo.id)
           .subscribe(
             data => {
-              this.toastr.success("Sucesso ao remover o veículo.");
+              this.toastr.success("Sucesso ao remover o custo.");
               // this.buscar();
               this.recarregarTabela();
             },
             err => {
-              this.toastr.error("Erro ao remover o veículo.");
+              this.toastr.error("Erro ao remover o custo.");
             }
           )
       }
