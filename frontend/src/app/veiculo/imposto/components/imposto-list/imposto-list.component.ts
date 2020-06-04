@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ImpostoService } from '../../service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { Imposto } from '../../models';
 import { DataTableDirective } from 'angular-datatables';
@@ -23,7 +23,8 @@ export class ImpostoListComponent implements OnInit, AfterViewInit {
   constructor(
     private service: ImpostoService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +40,8 @@ export class ImpostoListComponent implements OnInit, AfterViewInit {
 
   irParaEditar(data) {
     const imposto: Imposto = data;
-    this.router.navigate(['/imposto/editar/' + imposto.id]);
+    const idVeiculo = this.route.snapshot.paramMap.get('id');
+    this.router.navigate(['veiculo/editar/' + idVeiculo + '/imposto/editar/' + imposto.id]);
   }
 
   montarTabela() {
@@ -81,7 +83,8 @@ export class ImpostoListComponent implements OnInit, AfterViewInit {
   }
 
   buscar(dataTablesParameters: any, callback) {
-    this.service.buscar(1)
+    const idVeiculo = this.route.snapshot.paramMap.get('id');
+    this.service.buscar(idVeiculo)
     .subscribe(
       data => {
         const response = data;

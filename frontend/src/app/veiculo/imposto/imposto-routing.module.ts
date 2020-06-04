@@ -5,15 +5,15 @@ import { ImpostoFormComponent, ImpostoListComponent } from "./components";
 
 export const ImpostoRoutes: Routes = [
     {
-        path: 'imposto',
+        path: 'veiculo/editar/:id/imposto',
         component: ImpostoListComponent
     },
     {
-        path: 'imposto/novo',
+        path: 'veiculo/editar/:id/imposto/novo',
         component: ImpostoFormComponent
     },
     {
-        path: 'imposto/editar/:id',
+        path: 'veiculo/editar/:id/imposto/editar/:id',
         component: ImpostoFormComponent
     },
 ];

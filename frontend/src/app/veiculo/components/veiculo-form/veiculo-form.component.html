@@ -1,13 +1,13 @@
 <form novalidate autocomplete="off" [formGroup]="form">
     <ul *ngIf="modoAtualizar" class="nav">
         <li class="nav-item">
-          <a class="nav-link active" href="/veiculo">Dados do veículo</a>
+            <a class="nav-link active">Dados do veículo</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/custo">Custos</a>
+            <a class="nav-link" routerLink="custo">Custos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/imposto">Impostos</a>
+            <a class="nav-link" routerLink="imposto">Impostos</a>
         </li>
     </ul>
     <div class="card bg-light mb-3" >

@@ -30,15 +30,15 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="valor">Valor:</label>
-                        <input type="number" id="valor" name="valor" class="form-control form-control-sm" placeholder="Informe o valor"
+                        <input type="number" min="1" step="any" id="valor" name="valor" class="form-control form-control-sm" placeholder="Informe o valor do custo"
                             formControlName="valor">
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="categoriaCusto">Categoria de custo:</label>
-                        <input type="text" id="categoriaCusto" name="categoriaCusto" class="form-control form-control-sm" placeholder="Informe a categoria de custo do veículo" formControlName="categoriaCusto">
+                        <label for="categoriaCusto">Categoria do Custo:</label>
+                        <input type="number" min="1" step="any" id="categoriaCusto" name="categoriaCusto" class="form-control form-control-sm" placeholder="Informe o categoriaCusto do custo" formControlName="categoriaCusto">
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                 Atualizar
             </button>
             &nbsp;
-            <a class="btn btn-secondary" href="custo">Voltar</a>
+            <a class="btn btn-secondary" routerLink="../../">Voltar</a>
         </div>
     </div>
 </form>

@@ -1,8 +1,19 @@
 <div class="row">
     <div class="col-md-12 text-right">
-        <a class="btn btn-primary" href="custo/novo">
-            <i class="fa fa-plus"></i>&nbsp;Cadastrar custo
+        <a class="btn btn-primary" routerLink="novo">
+            <i class="fa fa-plus"></i>&nbsp;Cadastrar Custo
         </a>
+        <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="../">Dados do veículo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active">Custos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="../imposto">Impostos</a>
+            </li>
+          </ul>
     </div>
     <div class="col-md-12 py-3">
         <table id="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-sm">
