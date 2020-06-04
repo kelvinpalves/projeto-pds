@@ -11,6 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author kelvin
  */
-public interface RotaRepository extends JpaRepository<Routes, Long> {
+public interface RotaRepository extends JpaRepository<Routes, Long>, RotaRepositoryCustom {
     
 }

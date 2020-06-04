@@ -5,16 +5,21 @@
  */
 package br.unisc.gestaofrota.api.rota;
 
+import br.unisc.gestaofrota.api.veiculo.veiculo.VeiculoDto;
+import java.util.Date;
 import java.util.List;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  *
  * @author kelvin
  */
-public interface RotaService {
-    
-    RotaDto salvar(RotaDto dto) throws Exception;
-    
-    List<RotaDto> listarPontos(ListarPontoDto dto) throws Exception;
-    
+
+@Data
+@Builder
+public class ListarPontoDto {
+    private final Date inicio;
+    private final Date fim;
+    private final List<VeiculoDto> veiculos;
 }
