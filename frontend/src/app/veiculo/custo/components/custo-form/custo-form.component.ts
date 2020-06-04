@@ -4,6 +4,7 @@ import { CustoService } from '../../service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Custo } from '../../models';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-custo-form',
@@ -14,6 +15,7 @@ export class CustoFormComponent implements OnInit {
   form: FormGroup;
   modoAtualizar: boolean;
   idCusto: string;
+  idVeiculo: string;
 
   constructor(
     private dataservice: CustoService,
@@ -33,11 +35,11 @@ export class CustoFormComponent implements OnInit {
     let custo: Custo = this.form.value;
     
     this.dataservice
-      .atualizar(custo, this.idCusto)
+      .atualizar(this.idVeiculo, custo)
       .subscribe(
         data => {
           this.toastr.success("Sucesso ao atualizar o veículo.");
-          this.router.navigate(['/custo']);
+          this.router.navigate(['/veiculo/editar/' + this.idVeiculo + '/custo']);
         },
         err => {
           this.toastr.error("Erro ao atualizar o veículo.");
@@ -49,29 +51,25 @@ export class CustoFormComponent implements OnInit {
 
   gerarForm() {
     this.form = this.fb.group({
-      nome: ['', [Validators.required]],
-      placa: ['', [Validators.required]],
-      chassi: ['', [Validators.required]],
-      renavan: ['', [Validators.required]],
-      anoModelo: ['', [Validators.required]],
-      anoFabricacao: ['', [Validators.required]]
+      valor: ['', [Validators.required]],
+      categoriaCusto: ['', [Validators.required]],
     });
   }
 
   obterDados() {
-    this.idCusto = this.route.snapshot.paramMap.get('id');
+    this.idVeiculo = this.route.snapshot.url[2].toString();
+    let idCusto = this.route.snapshot.url.pop();
+    if (Number.isInteger(parseInt(idCusto.path))) {
+      this.idCusto = this.route.snapshot.paramMap.get('id');
+    }
     if (this.idCusto) {
       this.modoAtualizar = true;
       this.dataservice.buscarCusto(this.idCusto)
         .subscribe(
           data => {
             const custo: Custo = data;
-            this.form.get('placa').setValue(custo.placa);
-            this.form.get('nome').setValue(custo.nome);
-            this.form.get('chassi').setValue(custo.chassi);
-            this.form.get('renavan').setValue(custo.renavan);
-            this.form.get('anoModelo').setValue(custo.anoModelo);
-            this.form.get('anoFabricacao').setValue(custo.anoFabricacao);
+            this.form.get('valor').setValue(custo.valor);
+            this.form.get('categoriaCusto').setValue(custo.categoriaCusto);
           },
           err => {
             this.toastr.error("Erro ao buscar dados.");
@@ -83,7 +81,7 @@ export class CustoFormComponent implements OnInit {
   criar() {
     let custo: Custo = this.form.value;
 
-    this.dataservice.criar(custo)
+    this.dataservice.criar(this.idVeiculo, custo)
     .subscribe(
       data => {
         if (data.id) {

@@ -5,15 +5,15 @@ import { CustoFormComponent, CustoListComponent } from "./components";
 
 export const CustoRoutes: Routes = [
     {
-        path: 'custos',
+        path: 'veiculo/editar/:id/custo',
         component: CustoListComponent
     },
     {
-        path: 'custos/novo',
+        path: 'veiculo/editar/:id/custo/novo',
         component: CustoFormComponent
     },
     {
-        path: 'custos/editar/:id',
+        path: 'veiculo/editar/:id/custo/editar/:id',
         component: CustoFormComponent
     },
 ];

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CustoService } from '../../service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { Custo } from '../../models';
 import { DataTableDirective } from 'angular-datatables';
@@ -23,7 +23,8 @@ export class CustoListComponent implements OnInit, AfterViewInit {
   constructor(
     private service: CustoService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +40,8 @@ export class CustoListComponent implements OnInit, AfterViewInit {
 
   irParaEditar(data) {
     const custo: Custo = data;
-    this.router.navigate(['/custo/editar/' + custo.id]);
+    const idVeiculo = this.route.snapshot.paramMap.get('id');
+    this.router.navigate(['veiculo/editar/' + idVeiculo + '/custo/editar/' + custo.id]);
   }
 
   montarTabela() {
@@ -49,9 +51,8 @@ export class CustoListComponent implements OnInit, AfterViewInit {
       },
       columns: [
         { title: '#', data: 'id' }, 
-        { title: 'Nome', data: 'nome'}, 
-        { title: 'Placa', data: 'placa'}, 
-        { title: 'Chassi', data: 'chassi'},
+        { title: 'Valor', data: 'valor'}, 
+        { title: 'Categoria', data: 'categoriaCusto'}, 
         {
           data: 'id', searchable: false, orderable: false, title: "Ações", name: 'id', className: 'text-center ', render: (d1, d2, data) => {
             return `
@@ -82,7 +83,8 @@ export class CustoListComponent implements OnInit, AfterViewInit {
   }
 
   buscar(dataTablesParameters: any, callback) {
-    this.service.buscar()
+    const idVeiculo = this.route.snapshot.paramMap.get('id');
+    this.service.buscar(idVeiculo)
     .subscribe(
       data => {
         const response = data;
@@ -92,7 +94,7 @@ export class CustoListComponent implements OnInit, AfterViewInit {
         });
       },
       err => {
-        this.toastr.error("Erro ao carregar a lista de veículos.");
+        this.toastr.error("Erro ao carregar a lista de custos.");
       }
     )
   }
@@ -109,7 +111,7 @@ export class CustoListComponent implements OnInit, AfterViewInit {
 
     Swal.fire({
       title: 'Você tem certeza?',
-      text: "Ao aceitar, o veículo " + custo.placa + " será removido!",
+      text: "Ao aceitar, o custo " + custo.id + " será removido!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -121,12 +123,12 @@ export class CustoListComponent implements OnInit, AfterViewInit {
         this.service.remover(custo.id)
           .subscribe(
             data => {
-              this.toastr.success("Sucesso ao remover o veículo.");
+              this.toastr.success("Sucesso ao remover o custo.");
               // this.buscar();
               this.recarregarTabela();
             },
             err => {
-              this.toastr.error("Erro ao remover o veículo.");
+              this.toastr.error("Erro ao remover o custo.");
             }
           )
       }

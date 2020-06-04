@@ -12,20 +12,20 @@ export class CustoService {
     private http: HttpClient,
     private httpUtils: HttpUtilService) { }
 
-  buscar(): Observable<any> {
-    return this.http.get(env.baseApiUrl + 'custo', this.httpUtils.headers());
+  buscar(veiculoId): Observable<any> {
+    return this.http.get(env.baseApiUrl + 'custo/veiculo/' + veiculoId, this.httpUtils.headers());
   }
 
   buscarCusto(id): Observable<any> {
     return this.http.get(env.baseApiUrl + 'custo/' + id, this.httpUtils.headers());
   }
 
-  criar(custo: Custo): Observable<any> {
-    return this.http.post(env.baseApiUrl + 'custo', custo, this.httpUtils.headers());
+  criar(idVeiculo, custo: Custo): Observable<any> {
+    return this.http.post(env.baseApiUrl + 'custo/veiculo/' + idVeiculo, custo, this.httpUtils.headers());
   }
 
-  atualizar(custo: Custo, id): Observable<any> {
-    return this.http.put(env.baseApiUrl + 'custo/' + id, custo, this.httpUtils.headers());
+  atualizar(idVeiculo, custo: Custo): Observable<any> {
+    return this.http.put(env.baseApiUrl + 'custo/' + idVeiculo, custo, this.httpUtils.headers());
   }
 
   remover(id): Observable<any> {

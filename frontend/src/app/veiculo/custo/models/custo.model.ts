@@ -1,5 +1,7 @@
 export class Custo {
     constructor(
-        /** TO-DO */
+        public id: string,
+        public valor: string,
+        public categoriaCusto: string,
     ) { }
 }
