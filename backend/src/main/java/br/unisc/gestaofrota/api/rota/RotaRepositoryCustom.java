@@ -5,16 +5,16 @@
  */
 package br.unisc.gestaofrota.api.rota;
 
+import br.unisc.gestaofrota.api.veiculo.veiculo.Vehicles;
+import java.util.Date;
 import java.util.List;
 
 /**
  *
  * @author kelvin
  */
-public interface RotaService {
+public interface RotaRepositoryCustom {
     
-    RotaDto salvar(RotaDto dto) throws Exception;
-    
-    List<RotaDto> listarPontos(ListarPontoDto dto) throws Exception;
+    List<Routes> getByDate(Date inicio, Date fim);
     
 }

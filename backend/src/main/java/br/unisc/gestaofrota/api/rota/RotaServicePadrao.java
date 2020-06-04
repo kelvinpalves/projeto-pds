@@ -8,14 +8,15 @@ package br.unisc.gestaofrota.api.rota;
 import br.unisc.gestaofrota.api.motorista.Drivers;
 import br.unisc.gestaofrota.api.motorista.MotoristaDto;
 import br.unisc.gestaofrota.api.motorista.MotoristaService;
-import br.unisc.gestaofrota.api.usuario.UsuarioDto;
-import br.unisc.gestaofrota.api.usuario.UsuarioService;
 import br.unisc.gestaofrota.api.veiculo.veiculo.Vehicles;
+import br.unisc.gestaofrota.api.veiculo.veiculo.VeiculoConversor;
 import br.unisc.gestaofrota.api.veiculo.veiculo.VeiculoDto;
 import br.unisc.gestaofrota.api.veiculo.veiculo.VeiculoService;
 import br.unisc.gestaofrota.utils.mapper.DataMapperDefault;
 import br.unisc.pds.utils.exception.ResourceNotFoundException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,6 +104,34 @@ public class RotaServicePadrao implements RotaService {
         if (dto.getVelocidade() == null) {
             throw new Exception("O campo velocidade é obrigatório.");
         }
+    }
+
+    @Override
+    public List<RotaDto> listarPontos(ListarPontoDto dto) throws Exception {
+        if (dto.getInicio() == null) {
+            throw new Exception("O campo data inicial é obrigatório.");
+        }
+        
+        if (dto.getFim() == null) {
+            throw new Exception("O campo data final é obrigatório.");
+        }
+        
+        if (dto.getVeiculos() == null || dto.getVeiculos().isEmpty()) {
+            throw new Exception("Selecione algum veículo.");
+        }
+        
+        List<Routes> rotas = this.repository.getByDate(dto.getInicio(), dto.getFim());
+        List<Routes> novaLista = new ArrayList<>();
+        
+        for (Routes rota : rotas) {
+            for (VeiculoDto veiculoDto : dto.getVeiculos()) {
+                if (veiculoDto.getId().equals(rota.getVehicle().getId())) {
+                    novaLista.add(rota);
+                }
+            }
+        }
+        
+        return DataMapperDefault.map().comFunction(RotaConversor.criarConversorDto()).convert(novaLista);
     }
     
 }
