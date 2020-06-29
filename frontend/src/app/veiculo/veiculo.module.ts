@@ -7,11 +7,12 @@ import { DataTablesModule } from 'angular-datatables';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { VeiculoMapComponent } from './components/veiculo-map/veiculo-map.component';
 
 @NgModule({
   declarations: [
     VeiculoFormComponent, 
-    VeiculoListComponent
+    VeiculoListComponent, VeiculoMapComponent
   ],
   imports: [
     CommonModule,
