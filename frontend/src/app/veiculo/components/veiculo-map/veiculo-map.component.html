@@ -1,1 +1,25 @@
-<p>veiculo-map works!</p>
+<div class="card bg-light mb-3" >
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <b>Rotas do Veículo</b>
+            </div>
+            <div class="col-md-6 text-right">
+                <a href="veiculo">Veículo</a>
+                &nbsp;
+                <i class="fas fa-arrow-right"></i>
+                &nbsp;
+                Rotas do Veículo
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <agm-map [latitude]="-23.8779431" [longitude]="-49.8046873" [zoom]="15">
+
+        </agm-map>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-secondary" href="veiculo">Voltar</a>
+
+    </div>
+</div>

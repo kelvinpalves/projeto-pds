@@ -8,7 +8,8 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VeiculoMapComponent } from './components/veiculo-map/veiculo-map.component';
-
+import { AgmCoreModule } from '@agm/core';
+import { environment} from '../../environments/environment';
 @NgModule({
   declarations: [
     VeiculoFormComponent, 
@@ -20,7 +21,10 @@ import { VeiculoMapComponent } from './components/veiculo-map/veiculo-map.compon
     DataTablesModule,
     RouterModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleMapsApiKey
+    })
   ],
   providers: [
     VeiculoService
