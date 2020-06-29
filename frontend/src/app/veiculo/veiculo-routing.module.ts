@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from '@angular/router';
 
-import { VeiculoFormComponent, VeiculoListComponent } from "./components";
+import { VeiculoFormComponent, VeiculoListComponent, VeiculoMapComponent } from "./components";
 
 export const VeiculoRoutes: Routes = [
     {
@@ -16,6 +16,10 @@ export const VeiculoRoutes: Routes = [
         path: 'veiculo/editar/:id',
         component: VeiculoFormComponent
     },
+    {
+        path: 'veiculo/mapa/:id',
+        component: VeiculoMapComponent        
+    }
 ];
 
 @NgModule({
