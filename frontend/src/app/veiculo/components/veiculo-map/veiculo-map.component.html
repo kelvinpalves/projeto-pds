@@ -14,8 +14,10 @@
         </div>
     </div>
     <div class="card-body">
-        <agm-map [latitude]="-23.8779431" [longitude]="-49.8046873" [zoom]="15">
-
+        <agm-map [latitude]="latitudeScs" [longitude]="longitudeScs" [zoom]="zoom">
+            <div *ngFor="let coordenada of coordenadas">
+                <agm-marker [latitude]="coordenada.latitude" [longitude]="coordenada.longitude"></agm-marker>
+            </div>
         </agm-map>
     </div>
     <div class="card-footer">
