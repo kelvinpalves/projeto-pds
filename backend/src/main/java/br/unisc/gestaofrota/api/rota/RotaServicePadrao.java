@@ -116,18 +116,15 @@ public class RotaServicePadrao implements RotaService {
             throw new Exception("O campo data final é obrigatório.");
         }
        
+        
+        System.out.println(dto.getInicio());
+        System.out.println(dto.getFim());
+        System.out.println(dto.getId());
+        
         List<Routes> rotas = this.repository.getByDate(dto.getInicio(), dto.getFim());
-        List<Routes> novaLista = new ArrayList<>();
         
-        for (Routes rota : rotas) {
-            
-            if (dto.getId().equals(rota.getVehicle().getId())) {
-                novaLista.add(rota);
-            }
-            
-        }
         
-        return DataMapperDefault.map().comFunction(RotaConversor.criarConversorDto()).convert(novaLista);
+        return DataMapperDefault.map().comFunction(RotaConversor.criarConversorDto()).convert(rotas);
     }
     
 }
