@@ -13,6 +13,7 @@ import { UsuarioModule, UsuarioRoutingModule } from './usuario';
 import { MotoristaModule, MotoristaRoutingModule } from './motorista';
 import { VeiculoModule, VeiculoRoutingModule } from './veiculo';
 import { CustoModule, CustoRoutingModule } from './veiculo/custo';
+import { RelatorioModule, RelatorioRoutingModule } from './veiculo/relatorio';
 import { ImpostoModule, ImpostoRoutingModule } from './veiculo/imposto';
 import { CommonLocalModule } from './common';
 import { DataTablesModule } from 'angular-datatables';
@@ -49,6 +50,8 @@ registerLocaleData(localePt);
     VeiculoRoutingModule,
     CustoModule,
     CustoRoutingModule,
+    RelatorioModule,
+    RelatorioRoutingModule,
     ImpostoModule,
     ImpostoRoutingModule,
     CommonLocalModule,
