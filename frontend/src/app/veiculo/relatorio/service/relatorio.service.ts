@@ -12,9 +12,8 @@ export class RelatorioService {
     private http: HttpClient,
     private httpUtils: HttpUtilService) { }
 
-  buscar(veiculoId): Observable<any> {
-    // Buscar custo e imposto de veículo
-    return this.http.get(env.baseApiUrl + 'Relatorio/veiculo/' + veiculoId, this.httpUtils.headers());
+  buscar(relatorio): Observable<any> {
+    return this.http.post(env.baseApiUrl + 'relatorio', relatorio, this.httpUtils.headers());
   }
 
 }

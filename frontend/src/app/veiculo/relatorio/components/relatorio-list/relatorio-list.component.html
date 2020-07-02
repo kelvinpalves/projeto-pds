@@ -1,6 +1,53 @@
 <div class="row">
     <div class="col-md-12 py-3">
-        <table id="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-sm">
+        <div class="card-body">
+            <form [formGroup]="form">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="dataInicio">De</label>
+                        <input type="date" id="dataInicio" name="dataInicio" class="form-control form-control-sm" placeholder="Informe a data de inicio" formControlName="dataInicio">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="dataFim">Ate</label>
+                        <input type="date" id="dataFim" name="dataFim" class="form-control form-control-sm" placeholder="Informe a data de fim" formControlName="dataFim">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        
+                        <button type="submit" class="btn btn-primary" (click)="buscarRelatoriosPorData()">
+                            <i></i>
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+        <table class="table table-bordered table-condensed" *ngIf="relatorios && relatorios.length > 0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <td>Tipo</td>
+                    <td>Valor</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let relatorio of relatorios; index as i">
+                    <td> {{ i + 1 }} </td>
+                    <td> {{ relatorio.tipo }} </td>
+                    <td> {{ relatorio.valor | currency:'BRL':true }} </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td colspan="2">{{ total | currency:'BRL':true }}</td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>
