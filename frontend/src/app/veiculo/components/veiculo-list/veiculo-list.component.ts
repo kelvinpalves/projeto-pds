@@ -42,9 +42,15 @@ export class VeiculoListComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/veiculo/editar/' + veiculo.id]);
   }
 
+
   irParaRelatorio(data) {
     const veiculo: Veiculo = data;
     this.router.navigate(['/veiculo/' + veiculo.id + '/relatorio']);
+  }
+  
+  irParaMapa(data) {
+    const veiculo: Veiculo = data;
+    this.router.navigate(['/veiculo/mapa/' + veiculo.id])
   }
 
   montarTabela() {
@@ -61,6 +67,7 @@ export class VeiculoListComponent implements OnInit, AfterViewInit {
           data: 'id', searchable: false, orderable: false, title: "Ações", name: 'id', className: 'text-center ', render: (d1, d2, data) => {
             return `
             <button class="btn btn-primary relatorio" style="padding: 8px; padding-top: 0px; padding-bottom: 0px;" ><i class="fa fa-list"></i></button>
+            <button class="btn btn-info mapa" style="padding: 8px; padding-top: 0px; padding-bottom: 0px;" ><i class="fa fa-map"></i></button>
             <button class="btn btn-primary editar" style="padding: 8px; padding-top: 0px; padding-bottom: 0px;" ><i class="fa fa-edit"></i></button>
             <button class="btn btn-danger remover" (click)="remover()" style="padding: 8px; padding-top: 0px; padding-bottom: 0px;"><i class="fa fa-trash"></i></button>
           `;
@@ -88,6 +95,12 @@ export class VeiculoListComponent implements OnInit, AfterViewInit {
     $('.relatorio', row).bind('click', () => {
       this.irParaRelatorio(data);
     });
+
+    $('.mapa', row).unbind('click');
+    $('.mapa', row).click('click', () => {
+      this.irParaMapa(data)
+    })
+
 
     return row;
   }
