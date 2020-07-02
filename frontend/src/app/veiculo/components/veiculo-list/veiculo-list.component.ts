@@ -101,7 +101,6 @@ export class VeiculoListComponent implements OnInit, AfterViewInit {
       this.irParaMapa(data)
     })
 
-
     return row;
   }
 
