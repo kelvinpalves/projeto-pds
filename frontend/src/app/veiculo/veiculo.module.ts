@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VeiculoService } from './service';
+import { VeiculoService, RotaService } from './service';
 import { VeiculoFormComponent, VeiculoListComponent } from './components';
 import { CommonLocalModule } from '../common';
 import { DataTablesModule } from 'angular-datatables';
@@ -27,7 +27,8 @@ import { environment} from '../../environments/environment';
     })
   ],
   providers: [
-    VeiculoService
+    VeiculoService,
+    RotaService
   ]
 })
 export class VeiculoModule { }

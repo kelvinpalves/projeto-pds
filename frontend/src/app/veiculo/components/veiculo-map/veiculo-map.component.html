@@ -13,11 +13,37 @@
             </div>
         </div>
     </div>
+
     <div class="card-body">
-        <agm-map [latitude]="latitudeScs" [longitude]="longitudeScs" [zoom]="zoom">
-            <div *ngFor="let coordenada of coordenadas">
-                <agm-marker [latitude]="coordenada.latitude" [longitude]="coordenada.longitude"></agm-marker>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="dataInicio">De</label>
+                    <input type="date" id="dataInicio" name="dataInicio" class="form-control form-control-sm" placeholder="Informe a data de inicio" formControlName="dataInicio">
+                </div>
             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="dataFim">Ate</label>
+                    <input type="date" id="dataFim" name="dataFim" class="form-control form-control-sm" placeholder="Informe a data de fim" formControlName="dataFim">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    
+                    <button type="submit" class="btn btn-primary" (click)="buscarRotasPorData()">
+                        <i></i>
+                        Buscar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <agm-map [latitude]="latitudeScs" [longitude]="longitudeScs" [zoom]="zoom">
+            <div *ngIf="coordenadas">
+                <div *ngFor="let coordenada of coordenadas">
+                    <agm-marker [latitude]="coordenada.latitude" [longitude]="coordenada.longitude"></agm-marker>
+                </div>
+            </div>  
         </agm-map>
     </div>
     <div class="card-footer">
