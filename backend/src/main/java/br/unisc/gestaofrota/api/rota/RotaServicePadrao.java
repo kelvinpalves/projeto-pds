@@ -123,6 +123,7 @@ public class RotaServicePadrao implements RotaService {
         
         List<Routes> rotas = this.repository.getByDate(dto.getInicio(), dto.getFim());
         
+        System.out.println(rotas);
         
         return DataMapperDefault.map().comFunction(RotaConversor.criarConversorDto()).convert(rotas);
     }
