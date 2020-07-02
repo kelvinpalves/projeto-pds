@@ -15,6 +15,7 @@
     </div>
 
     <div class="card-body">
+        <form [formGroup]="form">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -38,6 +39,7 @@
                 </div>
             </div>
         </div>
+        </form>
         <agm-map [latitude]="latitudeScs" [longitude]="longitudeScs" [zoom]="zoom">
             <div *ngIf="coordenadas">
                 <div *ngFor="let coordenada of coordenadas">

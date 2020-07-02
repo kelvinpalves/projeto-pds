@@ -21,5 +21,5 @@ import lombok.Data;
 public class ListarPontoDto {
     private final Date inicio;
     private final Date fim;
-    private final List<VeiculoDto> veiculos;
+    private final Integer id;
 }
