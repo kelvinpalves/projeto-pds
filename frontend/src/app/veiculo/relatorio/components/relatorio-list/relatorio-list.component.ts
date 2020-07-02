@@ -21,6 +21,7 @@ export class RelatorioListComponent implements OnInit, AfterViewInit {
   idVeiculo: string;
   form: FormGroup;
   relatorios: Relatorio[];
+  total: number = 0;
 
   constructor(
     private dataService: RelatorioService,
@@ -71,12 +72,12 @@ export class RelatorioListComponent implements OnInit, AfterViewInit {
     .buscar(params)
     .subscribe(
       data => {
-        this.relatorios = data.map(params => {
-          return {
-            tipo: params.tipo,
-            valor: params.valor
-          }
-        })
+        
+        this.relatorios = data;
+        this.total = 0;
+        for (let i = 0; i < data.length; i++) {
+          this.total += data[i].valor;
+        }
       },
       error => {
         this.toastr.error("Error ao buscar os relatorios.");
@@ -87,7 +88,7 @@ export class RelatorioListComponent implements OnInit, AfterViewInit {
   buscarRelatoriosPorData(){
     //Pegar os valores de inicio e fim através do form
     let params = {
-      id: this.idVeiculo,
+      veiculo: this.idVeiculo,
       inicio: this.form.get('dataInicio').value,
       fim: this.form.get('dataFim').value
     }

@@ -27,7 +27,27 @@
             </div>
             </form>
         </div>
-        <table id="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-sm">
+        <table class="table table-bordered table-condensed" *ngIf="relatorios && relatorios.length > 0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <td>Tipo</td>
+                    <td>Valor</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let relatorio of relatorios; index as i">
+                    <td> {{ i + 1 }} </td>
+                    <td> {{ relatorio.tipo }} </td>
+                    <td> {{ relatorio.valor | currency:'BRL':true }} </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td colspan="2">{{ total | currency:'BRL':true }}</td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>
