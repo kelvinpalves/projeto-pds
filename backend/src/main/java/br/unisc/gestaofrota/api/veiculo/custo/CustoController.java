@@ -37,7 +37,7 @@ public class CustoController {
     }
     
     @GetMapping("/custo/veiculo/{id}")
-    public List<CustoDto> buscarTodos(@PathVariable(value = "id") Long veiculo) {
+    public List<CustoDtoLista> buscarTodos(@PathVariable(value = "id") Long veiculo) {
         return service.buscarTodos(veiculo);
     }
     

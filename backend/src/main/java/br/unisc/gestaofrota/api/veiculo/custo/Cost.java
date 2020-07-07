@@ -5,6 +5,7 @@
  */
 package br.unisc.gestaofrota.api.veiculo.custo;
 
+import br.unisc.gestaofrota.api.veiculo.custo.categoria.Category;
 import br.unisc.gestaofrota.api.veiculo.veiculo.Vehicles;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -28,7 +29,12 @@ public class Cost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private BigDecimal value;
-    private BigDecimal costCategory;
+    
+    @ManyToOne 
+    @JoinColumn
+    private Category category;
+    
+    
     @ManyToOne
     @JoinColumn
     private Vehicles vehicle;

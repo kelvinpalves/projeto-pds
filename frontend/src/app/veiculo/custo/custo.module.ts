@@ -7,6 +7,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoriaService } from './service/categoria.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    CustoService
+    CustoService,
+    CategoriaService
   ]
 })
 export class CustoModule { }

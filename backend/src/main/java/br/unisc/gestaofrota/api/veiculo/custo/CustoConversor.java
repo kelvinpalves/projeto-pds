@@ -16,7 +16,15 @@ public class CustoConversor {
         return (source) -> CustoDto.builder()
                 .id(source.getId())
                 .valor(source.getValue())
-                .categoriaCusto(source.getCostCategory())
+                .categoriaCusto(source.getCategory().getId())
+                .build();
+    }
+    
+    public static Function<Cost, CustoDtoLista> criarConversorDtoTabela() {
+        return (source) -> CustoDtoLista.builder()
+                .id(source.getId())
+                .valor(source.getValue())
+                .categoriaCusto(source.getCategory().getDescription())
                 .build();
     }
 }

@@ -5,6 +5,7 @@
  */
 package br.unisc.gestaofrota.api.veiculo.custo;
 
+import br.unisc.gestaofrota.api.veiculo.custo.categoria.Category;
 import br.unisc.gestaofrota.api.veiculo.veiculo.Vehicles;
 import br.unisc.gestaofrota.utils.mapper.DataMapperDefault;
 import br.unisc.pds.utils.exception.ResourceNotFoundException;
@@ -45,9 +46,9 @@ public class CustoServicePadrao implements CustoService {
     }
 
     @Override
-    public List<CustoDto> buscarTodos(Long veiculo) {
+    public List<CustoDtoLista> buscarTodos(Long veiculo) {
         List<Cost> costs = this.repository.getByVehicle(veiculo);
-        return DataMapperDefault.map().comFunction(CustoConversor.criarConversorDto()).convert(costs);
+        return DataMapperDefault.map().comFunction(CustoConversor.criarConversorDtoTabela()).convert(costs);
     }
 
     @Override
@@ -57,7 +58,7 @@ public class CustoServicePadrao implements CustoService {
         Cost cost = new Cost();
         
         cost.setValue(dto.getValor());
-        cost.setCostCategory(dto.getCategoriaCusto());
+        cost.setCategory(new Category(dto.getCategoriaCusto()));
         
         Vehicles vehicle = new Vehicles();
         vehicle.setId(veiculo);
@@ -75,7 +76,7 @@ public class CustoServicePadrao implements CustoService {
         Cost cost = this.repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id, Cost.class));
         
         cost.setValue(dto.getValor());
-        cost.setCostCategory(dto.getCategoriaCusto());
+        cost.setCategory(new Category(dto.getCategoriaCusto()));
         
         cost = this.repository.save(cost);
         
