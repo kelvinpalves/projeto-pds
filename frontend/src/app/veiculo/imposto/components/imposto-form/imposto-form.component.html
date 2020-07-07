@@ -29,9 +29,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="documento">Documento:</label>
-                        <input type="text" id="documento" name="documento" class="form-control form-control-sm" placeholder="Informe o documento do imposto"
-                            formControlName="documento">
+                        <label for="dataPagamento">Data de pagamento:</label>
+                        <input type="date" id="dataPagamento" name="dataPagamento" class="form-control form-control-sm" formControlName="dataPagamento">
                     </div>
                 </div>
 
@@ -44,11 +43,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="dataPagamento">Data de pagamento:</label>
-                        <input type="date" id="dataPagamento" name="dataPagamento" class="form-control form-control-sm" formControlName="dataPagamento">
-                    </div>
+                <div class="form-group">
+                    <label for="documento">Documento:</label>
+                    <img [src]="imageSrc" style="max-width:300px;max-height:300px"/>
+                    <input type="file" id="documento" name="documento" formControlName="documento" (change)="handleInputChange($event)" />
                 </div>
             </div>
         </div>

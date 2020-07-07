@@ -15,6 +15,7 @@ export class ImpostoFormComponent implements OnInit {
   modoAtualizar: boolean;
   idImposto: string;
   idVeiculo: string;
+  imageSrc: string = '';
 
   constructor(
     private dataservice: ImpostoService,
@@ -30,9 +31,27 @@ export class ImpostoFormComponent implements OnInit {
     this.obterDados();
   }
 
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    var pattern = /image-*/;
+    var reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.imageSrc = reader.result;
+    console.log(this.imageSrc)
+  }
+
   atualizar() {
     let imposto: Imposto = this.form.value;
-    
+    imposto.documento = this.imageSrc;
     this.dataservice
       .atualizar(imposto, this.idVeiculo)
       .subscribe(
@@ -68,7 +87,7 @@ export class ImpostoFormComponent implements OnInit {
         .subscribe(
           data => {
             const imposto: Imposto = data;
-            this.form.get('documento').setValue(imposto.documento);
+            this.imageSrc = imposto.documento;
             this.form.get('valor').setValue(imposto.valor);
             this.form.get('dataPagamento').setValue(imposto.dataPagamento);
           },
@@ -81,7 +100,7 @@ export class ImpostoFormComponent implements OnInit {
 
   criar() {
     let imposto: Imposto = this.form.value;
-
+    imposto.documento = this.imageSrc;
     this.dataservice.criar(this.idVeiculo, imposto)
     .subscribe(
       data => {
