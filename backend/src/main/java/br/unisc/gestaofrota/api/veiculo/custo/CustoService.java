@@ -15,7 +15,7 @@ public interface CustoService {
     
     CustoDto buscar(Long id);
     
-    List<CustoDto> buscarTodos(Long veiculo);
+    List<CustoDtoLista> buscarTodos(Long veiculo);
     
     CustoDto salvar(CustoDto dto, Long veiculo) throws Exception;
     

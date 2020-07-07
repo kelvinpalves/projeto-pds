@@ -51,7 +51,9 @@ export class CustoListComponent implements OnInit, AfterViewInit {
       },
       columns: [
         { title: '#', data: 'id' }, 
-        { title: 'Valor', data: 'valor'}, 
+        { title: 'Valor', data: 'valor', render: (d1, d2, data) => {
+          return "R$ " + d1 + ",00";
+        }}, 
         { title: 'Categoria do custo', data: 'categoriaCusto'}, 
         {
           data: 'id', searchable: false, orderable: false, title: "Ações", name: 'id', className: 'text-center ', render: (d1, d2, data) => {

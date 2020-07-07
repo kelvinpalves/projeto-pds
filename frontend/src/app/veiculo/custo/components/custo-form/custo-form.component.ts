@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Custo } from '../../models';
 import { ClassGetter } from '@angular/compiler/src/output/output_ast';
+import { CategoriaService } from '../../service/categoria.service';
+import { Categoria } from '../../models/categoria.model';
 
 @Component({
   selector: 'app-custo-form',
@@ -16,19 +18,31 @@ export class CustoFormComponent implements OnInit {
   modoAtualizar: boolean;
   idCusto: string;
   idVeiculo: string;
+  categorias: Categoria[] = [];
 
   constructor(
     private dataservice: CustoService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private categoriaService: CategoriaService
   ) { }
 
   ngOnInit(): void {
     this.modoAtualizar = false;
     this.gerarForm();
+    this.buscarCombo();
     this.obterDados();
+  }
+
+  buscarCombo(): void {
+    this.categoriaService.buscarCombo()
+      .subscribe(
+        data => {
+          this.categorias = data;
+        }
+      );
   }
 
   atualizar() {

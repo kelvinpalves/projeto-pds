@@ -6,18 +6,17 @@
 package br.unisc.gestaofrota.api.veiculo.custo;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import lombok.Builder;
 import lombok.Data;
 
 /**
  *
- * @author joaogularte
+ * @author kelvin
  */
 @Data
 @Builder
-public class CustoDto {
+public class CustoDtoLista {
     private final Long id;
     private final BigDecimal valor;
-    private final Long categoriaCusto;
+    private final String categoriaCusto;
 }
