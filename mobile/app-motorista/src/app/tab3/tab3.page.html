@@ -1,17 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Locais
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="fetchLocalizations($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <div *ngFor="let localization of localizations">
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <h2>
+            ID: {{localization.id}}
+          </h2>
+          <p> Latitude:{{localization.latitude}} - Longitude:{{localization.longitude}} - Velocidade: {{ localization.velocidade }} km/h </p>
+        </ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
 </ion-content>
