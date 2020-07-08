@@ -89,7 +89,12 @@ export class ImpostoFormComponent implements OnInit {
             const imposto: Imposto = data;
             this.imageSrc = imposto.documento;
             this.form.get('valor').setValue(imposto.valor);
-            this.form.get('dataPagamento').setValue(imposto.dataPagamento);
+
+
+            let dataPagamento = new Date(imposto.dataPagamento);
+            console.log(dataPagamento);
+
+            this.form.get('dataPagamento').setValue(dataPagamento.toISOString().substring(0,10));
           },
           err => {
             this.toastr.error("Erro ao buscar dados.");

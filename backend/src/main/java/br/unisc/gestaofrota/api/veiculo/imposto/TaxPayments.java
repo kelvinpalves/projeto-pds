@@ -8,6 +8,7 @@ package br.unisc.gestaofrota.api.veiculo.imposto;
 import br.unisc.gestaofrota.api.veiculo.veiculo.Vehicles;
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,10 +29,12 @@ public class TaxPayments {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Lob
+    @Column(length = 1000000)
     private String document;
     private Date paymentDate;
     private BigDecimal value;
     @ManyToOne
     @JoinColumn
     private Vehicles vehicle;
+    
 }

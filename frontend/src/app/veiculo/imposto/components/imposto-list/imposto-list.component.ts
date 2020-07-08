@@ -51,8 +51,20 @@ export class ImpostoListComponent implements OnInit, AfterViewInit {
       },
       columns: [
         { title: '#', data: 'id' }, 
-        { title: 'Valor', data: 'valor'}, 
-        { title: 'Data de pagamento', data: 'dataPagamento'}, 
+        { title: 'Valor', data: 'valor', render: (d1) => {
+          return "R$ " + d1 + ",00";
+        }}, 
+        { title: 'Data de pagamento', data: 'dataPagamento', render: (d1) => {
+          let dataPagamento = new Date(d1);
+
+          let dia:any = dataPagamento.getDate();
+          dia = dia < 10 ? ("0" + dia) : dia;
+
+          let mes: any = (dataPagamento.getMonth() + 1);
+          mes = mes < 10 ? ("0" + mes) : mes;
+
+          return dia + "/" + mes + "/" + dataPagamento.getFullYear();
+        }}, 
         {
           data: 'id', searchable: false, orderable: false, title: "Ações", name: 'id', className: 'text-center ', render: (d1, d2, data) => {
             return `

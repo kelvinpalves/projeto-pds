@@ -44,9 +44,13 @@
             </div>
             <div class="row">
                 <div class="form-group">
-                    <label for="documento">Documento:</label>
-                    <img [src]="imageSrc" style="max-width:300px;max-height:300px"/>
+                    <label for="documento" id="labelDocumento">Comprovante:</label><br>
                     <input type="file" id="documento" name="documento" formControlName="documento" (change)="handleInputChange($event)" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img [src]="imageSrc" style="max-width:300px;max-height:300px" />
                 </div>
             </div>
         </div>
